@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="practice_autolayout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ProfileViewController" customModule="practice_autolayout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,6 +38,11 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ysv-f9-JFP">
                                 <rect key="frame" x="126.5" y="185" width="67" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="Q5z-9e-cEz"/>
+                                    <constraint firstAttribute="width" constant="67" id="sbY-bU-7UT"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="tIm-Xy-flA"/>
+                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Follow" cornerStyle="medium">
@@ -45,6 +50,9 @@
                                         <color key="backgroundColor" name="DicodingColor"/>
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="setFollowed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pAI-FD-osa"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sXD-Qa-LMV">
                                 <rect key="frame" x="12" y="240" width="296" height="196"/>
@@ -124,15 +132,23 @@
                             <constraint firstItem="Ysv-f9-JFP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WVP-Vk-Qzd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sXD-Qa-LMV" secondAttribute="bottom" id="WWP-8O-SLR"/>
                             <constraint firstItem="sXD-Qa-LMV" firstAttribute="top" secondItem="Ysv-f9-JFP" secondAttribute="bottom" constant="24" id="aNl-KL-FyZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ysv-f9-JFP" secondAttribute="trailing" constant="126.5" id="aob-FL-K4E"/>
+                            <constraint firstItem="Ysv-f9-JFP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="126.5" id="bCg-Ou-IaQ"/>
                             <constraint firstItem="sXD-Qa-LMV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="cyh-6Y-Jzo"/>
                             <constraint firstItem="5Bu-yk-cjm" firstAttribute="top" secondItem="uht-4u-1Pe" secondAttribute="bottom" constant="8" symbolic="YES" id="fGp-ha-7BD"/>
                             <constraint firstItem="uht-4u-1Pe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gJb-Rp-clZ"/>
+                            <constraint firstItem="Ysv-f9-JFP" firstAttribute="top" secondItem="X0C-v5-TI8" secondAttribute="bottom" constant="12" id="gZz-67-W8o"/>
                             <constraint firstItem="5Bu-yk-cjm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jHn-J0-TpS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sXD-Qa-LMV" secondAttribute="trailing" constant="12" id="oVf-Pp-Y68"/>
+                            <constraint firstItem="Ysv-f9-JFP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sHJ-rH-JaL"/>
                             <constraint firstItem="5Bu-yk-cjm" firstAttribute="top" secondItem="uht-4u-1Pe" secondAttribute="bottom" constant="8" symbolic="YES" id="tAI-vD-vbI"/>
                             <constraint firstItem="uht-4u-1Pe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="tt8-ab-XBB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="followButton" destination="Ysv-f9-JFP" id="wfL-v1-GES"/>
+                        <outlet property="profileImageView" destination="uht-4u-1Pe" id="uFs-gY-J3m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -145,16 +161,16 @@
         <image name="LogoEvent" width="640" height="640"/>
         <image name="MyPicture" width="90" height="90"/>
         <namedColor name="BlueColor">
-            <color red="0.11764705882352941" green="0.56470588235294117" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.11800000071525574" green="0.56499999761581421" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DicodingColor">
-            <color red="0.15686274509803921" green="0.23137254901960785" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.15700000524520874" green="0.23100000619888306" blue="0.25099998712539673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="GreenColor">
-            <color red="0.1803921568627451" green="0.83529411764705885" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18000000715255737" green="0.83499997854232788" blue="0.45100000500679016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RedColor">
-            <color red="1" green="0.27843137254901962" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.27799999713897705" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
